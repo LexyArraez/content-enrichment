@@ -1,16 +1,34 @@
-# This is a sample Python script.
-
-# Press Ctrl+F5 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from src.wikipedia.scraper import WikipediaScraper
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press F9 to toggle the breakpoint.
+def main():
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+    print("BIENVENIDA AL CONTENT ENRICHER\n")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    tema_usuario = input("Introduce el tema que deseas investigar en Wikipedia: ")
+
+    if not tema_usuario.strip():
+        print("Error: No puedes dejar el tema en blanco.")
+        return
+
+    print(f"\nBuscando '{tema_usuario}' en Wikipedia...\n")
+
+    scraper = WikipediaScraper()
+
+    try:
+        resultado_wiki = scraper.buscar_tema(tema_usuario)
+
+        print(f"ARTÍCULO ENCONTRADO: {resultado_wiki['titulo']}\n")
+
+        for parrafo in resultado_wiki['parrafos']:
+            print(f"{parrafo}\n")
+
+
+        print("Fin del proceso de Scraping con éxito.")
+
+    except ValueError as error:
+        print(f"\nHa ocurrido un problema: {error}")
+
+if __name__ == "__main__":
+   main()
