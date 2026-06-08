@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, MagicMock
-from src.wikipedia.cliente import WikipediaClient
+from src.wikipedia.WikipediaClient import WikipediaClient
 
 
 @pytest.fixture
