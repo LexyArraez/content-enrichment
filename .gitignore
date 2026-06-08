@@ -1,0 +1,23 @@
+# === Configuración de Editores e IDEs ===
+.idea/
+.vscode/
+
+# === Configuración Local ===
+.env
+
+# === Entornos Virtuales de Python ===
+venv/
+.venv/
+env/
+
+# === Caché de Python (Archivos temporales compilados) ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+
+# === Archivos del Sistema Operativo ===
+.DS_Store
+Thumbs.db
