@@ -6,7 +6,7 @@ def main():
     print("BIENVENIDA AL CONTENT ENRICHER\n")
 
     tema_usuario = input("Introduce el tema que deseas investigar en Wikipedia: ")
-    idioma_destino = input("Introduce el idioma para la traducción (ej. 'en' para inglés, 'fr' para francés): ")
+    idioma_destino = input("Introduce el idioma para la traducción (ejemplo: 'en' para inglés, 'fr' para francés): ")
 
     if not tema_usuario.strip():
         print("Error: No puedes dejar el tema en blanco.")
@@ -31,8 +31,7 @@ def main():
         print(f"\n[Error de configuración]: {error_env}")
     except ValueError as error:
         print(f"\n[Error de Wikipedia]: {error}")
-    except Exception as e:
-        print(f"\n[Error Inesperado]: {e}")
+
 
 if __name__ == "__main__":
    main()

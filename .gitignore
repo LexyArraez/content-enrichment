@@ -3,7 +3,9 @@
 .vscode/
 
 # === Configuración Local ===
-.env/
+.env
+.env.*
+!.env.example
 
 # === Entornos Virtuales de Python ===
 venv/
