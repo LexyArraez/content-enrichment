@@ -1,44 +1,39 @@
 from src.wikipedia.WikipediaScraper import WikipediaScraper
 
 
+
 def main():
-    scraper = WikipediaScraper()
 
     print("BIENVENIDA AL CONTENT ENRICHER\n")
 
     tema_usuario = input("Introduce el tema que deseas investigar en Wikipedia: ")
+    idioma_destino = input("Introduce el idioma para la traducción (ej. 'en' para inglés, 'fr' para francés): ")
+
     if not tema_usuario.strip():
-        print("Error: El tema no puede estar vacío.")
+        print("Error: No puedes dejar el tema en blanco.")
         return
 
-    idioma_usuario = input("Ingrese el código del idioma de destino:").strip().lower() or "es"
+    print(f"\nBuscando '{tema_usuario}' en Wikipedia...\n")
 
+    scraper = WikipediaScraper()
 
     try:
-        print("Conectando con Wikipedia y traduciendo contenido... Por favor, espere.\n")
-        resultado = scraper.buscar_tema(tema_usuario, idioma_usuario)
+        resultado_wiki = scraper.buscar_tema(tema_usuario)
 
-        print(f"TÍTULO TRADUCIDO ({idioma_usuario.upper()}): {resultado['titulo']}\n")
+        print(f"ARTÍCULO ENCONTRADO: {resultado_wiki['titulo']}\n")
+        print("Contenido Original de Wikipedia\n")
 
-        for parrafo in resultado['parrafos']:
-            print(parrafo + "\n")
+        for parrafo in resultado_wiki['parrafos']:
+            print(f"{parrafo}\n")
 
+        print("Fin del proceso de Scraping con éxito.\n")
 
-        print("Contenido obtenido y traducido con éxito.\n")
-        input("Presione [ENTER] para cerrar la aplicación...")
-
-
-    except ValueError as e:
-        print(f"\nError de validación: {e}")
-        input("\nPresione [ENTER] para salir...")
-    except RuntimeError as e:
-        print(f"\nError al traducir: {e}")
-        input("\nPresione [ENTER] para salir...")
+    except RuntimeError as error_env:
+        print(f"\n[Error de configuración]: {error_env}")
+    except ValueError as error:
+        print(f"\n[Error de Wikipedia]: {error}")
     except Exception as e:
-        print(f"\nOcurrió un problema inesperado: {e}")
-        input("\nPresione [ENTER] para salir...")
-
-
+        print(f"\n[Error Inesperado]: {e}")
 
 if __name__ == "__main__":
    main()

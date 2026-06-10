@@ -6,13 +6,13 @@ from dotenv import dotenv_values
 RUTA_RAIZ = pathlib.Path(__file__).resolve().parent.parent.parent
 RUTA_ENV = RUTA_RAIZ / ".env"
 
-
 config = dotenv_values(RUTA_ENV)
 
 class WikipediaClient:
 
-    BASE_URL = config.get("WIKIPEDIA_BASE_URL")
-    HEADERS = {"User-Agent": config.get("WIKIPEDIA_USER_AGENT")}
+    def __init__(self):
+        self.BASE_URL = config.get("WIKIPEDIA_BASE_URL")
+        self.HEADERS = {"User-Agent": config.get("WIKIPEDIA_USER_AGENT")}
 
     def obtener_html(self, tema: str):
 
