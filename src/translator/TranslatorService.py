@@ -7,7 +7,7 @@ class TranslatorService:
         pass
 
     def translate_text(self, text: str, source_lang: str, target_lang: str) :
-        if source_lang.strip().lower() == target_lang.strip().lower():
+        if source_lang.strip() == target_lang.strip():
             return text
 
         try:

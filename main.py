@@ -1,7 +1,6 @@
 from src.wikipedia.WikipediaScraper import WikipediaScraper
 
 
-
 def main():
 
     print("BIENVENIDA AL CONTENT ENRICHER\n")
