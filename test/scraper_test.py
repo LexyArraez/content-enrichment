@@ -1,4 +1,4 @@
-from src.wikipedia.scraper import WikipediaScraper
+from src.wikipedia.WikipediaScraper import WikipediaScraper
 
 
 def mi_cliente_vacio(tema):
@@ -17,7 +17,7 @@ def test_scraper_obtiene_los_parrafos_correctos():
 
     scraper.cliente.obtener_html = mi_cliente_vacio
 
-    from src.wikipedia.parser import WikipediaParser
+    from src.wikipedia.WikipediaParser import WikipediaParser
     WikipediaParser.extraer_titulo = mi_titulo_vacio
 
     WikipediaParser.extraer_parrafos = mis_parrafos_de_prueba
