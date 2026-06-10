@@ -1,31 +1,24 @@
-import pathlib
 import requests
-from dotenv import dotenv_values
 
-
-RUTA_RAIZ = pathlib.Path(__file__).resolve().parent.parent.parent
-RUTA_ENV = RUTA_RAIZ / ".env"
-
-config = dotenv_values(RUTA_ENV)
 
 class WikipediaClient:
 
-    def __init__(self):
-        self.BASE_URL = config.get("WIKIPEDIA_BASE_URL")
-        self.HEADERS = {"User-Agent": config.get("WIKIPEDIA_USER_AGENT")}
 
-    def obtener_html(self, tema: str):
+    BASE_URL = "https://es.wikipedia.org/wiki/"
+    HEADERS = {"User-Agent": "MiPrimerScraperBot/1.0"}
 
-        if not self.BASE_URL:
-            raise RuntimeError(
-                "Error de configuración: No se pudo leer la variable WIKIPEDIA_BASE_URL. "
-            )
+    def obtener_html(self, tema: str) -> str:
         tema_formateado = tema.strip().replace(" ", "_")
+        url_completa = f"{self.BASE_URL}{tema_formateado}"
+
         try:
-            respuesta = requests.get(f"{self.BASE_URL}{tema_formateado}", headers=self.HEADERS)
+            respuesta = requests.get(url_completa, headers=self.HEADERS)
+
             if respuesta.status_code == 404:
-                raise ValueError(f"El tema '{tema}' no existe.")
+                raise ValueError(f"¡Vaya! El tema '{tema}' no existe en Wikipedia.")
+
             respuesta.raise_for_status()
             return respuesta.text
+
         except requests.RequestException as e:
-            raise RuntimeError(f"Error de red: {e}")
+            raise RuntimeError(f"Error de conexión al buscar '{tema}': {e}")
