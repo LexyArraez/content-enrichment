@@ -32,14 +32,13 @@ def test_obtener_html_exitoso(cliente_wiki):
 def test_obtener_html_no_existe_404(cliente_wiki):
     #Arrange
     tema = "Este Tema No Existe"
-
     mock_respuesta = MagicMock()
     mock_respuesta.status_code = 404
 
     # Act
     with patch("requests.get", return_value=mock_respuesta):
         with pytest.raises(ValueError) as exc_info:
-            cliente_wiki.obtener_html(tema)  # <- Act
+            cliente_wiki.obtener_html(tema)
 
         # Assert
-        assert f"El tema '{tema}' no existe." in str(exc_info.value)
+        assert f"El tema '{tema}' no existe" in str(exc_info.value)

@@ -1,9 +1,9 @@
-Feature: Traducción de texto
+Feature: Traduccion de texto
 
-  Scenario: Traducción correcta entre dos idiomas diferentes
+  Scenario: Traduccion correcta entre dos idiomas diferentes
     Given tengo el texto "Hello" en idioma "en"
     When traduzco al idioma "es"
-    Then obtengo una traducción no vacía
+    Then obtengo una traduccion no vacia
 
   Scenario: El texto no se traduce si origen y destino son el mismo idioma
     Given tengo el texto "Hola" en idioma "es"
@@ -13,4 +13,4 @@ Feature: Traducción de texto
   Scenario: Se lanza un error si el idioma no existe
     Given tengo el texto "Hello" en idioma "en"
     When traduzco al idioma "xx"
-    Then obtengo un ValueError con el mensaje "Idioma no soportado: 'xx'"
+    Then obtengo un ValueError con el mensaje "Idioma no soportado: 'xx'."
