@@ -3,7 +3,6 @@ import requests
 
 class WikipediaClient:
 
-
     BASE_URL = "https://es.wikipedia.org/wiki/"
     HEADERS = {"User-Agent": "MiPrimerScraperBot/1.0"}
 

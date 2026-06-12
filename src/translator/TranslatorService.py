@@ -3,6 +3,7 @@ from deep_translator.exceptions import LanguageNotSupportedException
 
 
 class TranslatorService:
+
     def __init__(self):
         pass
 
@@ -14,6 +15,6 @@ class TranslatorService:
             translated = GoogleTranslator(source=source_lang, target=target_lang).translate(text)
             return translated
         except LanguageNotSupportedException:
-            raise ValueError(f"Idioma no soportado: '{target_lang}'.")
+            raise ValueError(f"Idioma no soportado: '{target_lang}'")
         except Exception as e:
             raise RuntimeError(f"Error al traducir el texto: {e}") from e
