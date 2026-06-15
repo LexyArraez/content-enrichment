@@ -15,14 +15,14 @@ class ContentExporter:
 
 
     def exportar_txt(self, nombre_archivo: str, contenido: str):
-        nombre_archivo = self._validar_nombre(nombre_archivo)
+        nombre_archivo = self.validar_nombre(nombre_archivo)
         if not nombre_archivo.endswith(".txt"):
             nombre_archivo += '.txt'
 
         ruta_completa = os.path.join(self.carpeta_destino, nombre_archivo)
 
         try:
-            with open(ruta_completa, "w", encoding="utf-8") as archivo:
+            with open(ruta_completa, "w", encoding="utf-8") as archivo:  #write modo escritura
                 archivo.write(contenido)
             return ruta_completa
 
@@ -30,7 +30,7 @@ class ContentExporter:
             raise RuntimeError(f"Error al guardar el archivo de texto: {e}")
 
     def exportar_pdf(self, nombre_archivo: str, tema: str, idioma: str, contenido: str) :
-        nombre_archivo = self._validar_nombre(nombre_archivo)
+        nombre_archivo = self.validar_nombre(nombre_archivo)
         if not nombre_archivo.endswith(".pdf"):
             nombre_archivo += '.pdf'
 
@@ -55,7 +55,7 @@ class ContentExporter:
         except Exception as e:
             raise RuntimeError(f"Error al generar el archivo PDF con Canvas: {e}")
 
-    def _validar_nombre(self, nombre_archivo: str) -> str:
+    def validar_nombre(self, nombre_archivo: str) :
         nombre_archivo = nombre_archivo.strip()
         if not nombre_archivo:
             raise ValueError("El nombre del archivo no puede estar vacío.")
