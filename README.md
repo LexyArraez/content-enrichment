@@ -18,15 +18,16 @@ Una herramienta automatizada en Python diseñada para extraer información de Wi
 El ecosistema de dependencias necesario para ejecutar y validar el desarrollo incluye:
 
 ## Dependencias
+## Dependencias
 
 | Librería | Uso |
-|---|---|
+| :--- | :--- |
 | `requests` | Peticiones HTTP a APIs y Wikipedia |
 | `beautifulsoup4` | Scraping del HTML de Wikipedia |
+| `deep-translator` | Traducción automática de textos a múltiples idiomas |
 | `reportlab` | Generación de archivos PDF |
 | `pytest` | Tests unitarios e integración |
 | `OpenAI SDK` | Consumo del servicio de Inteligencia Artificial de Groq |
-
 ---
 
 ##  Instalación y Uso Local 
